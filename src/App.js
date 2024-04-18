@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// Memo example
+import React, { useState } from "react";
+import GrandChild from "./GrandChild";
 
-function App() {
+const App = () => {
+  const [testingNumber, setTestingNumber] = useState(0);
+
+  const [todo, setTodo] = useState(["todo1", "todo2"]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GrandChild todo={todo} />
+      <button onClick={() => setTestingNumber((number) => number + 1)}>
+        <label>Increase number </label>
+      </button>
+
+      <button onClick={() => setTodo([...todo, `todo${todo?.length + 1}`])}>
+        <label>Increase Todo </label>
+      </button>
     </div>
   );
-}
+};
 
 export default App;
